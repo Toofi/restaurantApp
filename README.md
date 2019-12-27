@@ -1,4 +1,11 @@
-# StageQuentin
+# restaurantApp
+
+##########################
+#######MADE BY TOOFI######
+#https://github.com/toofi#
+##########################
+
+An angular app I made during my internship in a web dev company -typescript -javascript -angular -firebase
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
