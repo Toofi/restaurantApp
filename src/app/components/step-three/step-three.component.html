@@ -1,0 +1,81 @@
+<app-modal>
+    <div class="modalDescription">Etape 2 : Localisation du restaurant</div>
+    <div class="modalBody">
+        <form *ngIf='locationForm' [formGroup]="locationForm">
+            <fieldset class="uk-fieldset">
+                <label>Adresse</label>
+                <div class="uk-flex">
+                    <input type="text" class="uk-input"
+                        [ngClass]="{'uk-form-danger': locationForm.get('streetName').invalid && locationForm.get('streetName').touched }"
+                        placeholder="ex : Rue de Menin" formControlName="streetName">
+                    <span class="uk-animation-shake"
+                        *ngIf="locationForm.get('streetName').invalid && locationForm.get('streetName').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="locationForm.get('streetName').valid && locationForm.get('streetName').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Numéro</label>
+                <div class="uk-flex">
+                    <input type="text"
+                        [ngClass]="{'uk-form-danger': locationForm.get('numberStreet').invalid && locationForm.get('numberStreet').touched }"
+                        class="uk-input" placeholder="ex : 45" formControlName="numberStreet">
+                    <span class="uk-animation-shake"
+                        *ngIf="locationForm.get('numberStreet').invalid && locationForm.get('numberStreet').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="locationForm.get('numberStreet').valid && locationForm.get('numberStreet').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Code Postal</label>
+                <div class="uk-flex">
+                    <input type="text"
+                        [ngClass]="{'uk-form-danger': locationForm.get('postalCode').invalid && locationForm.get('postalCode').touched }"
+                        class="uk-input" placeholder="ex : 7700" formControlName="postalCode">
+                    <span class="uk-animation-shake"
+                        *ngIf="locationForm.get('postalCode').invalid && locationForm.get('postalCode').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="locationForm.get('postalCode').valid && locationForm.get('postalCode').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Ville</label>
+                <div class="uk-flex">
+                    <input type="text"
+                        [ngClass]="{'uk-form-danger': locationForm.get('cityName').invalid && locationForm.get('cityName').touched }"
+                        class="uk-input" placeholder="ex : Mouscron" formControlName="cityName">
+                    <span class="uk-animation-shake"
+                        *ngIf="locationForm.get('cityName').invalid && locationForm.get('cityName').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="locationForm.get('cityName').valid && locationForm.get('cityName').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Pays</label>
+                <div class="uk-flex">
+                    <app-country-search [inputArray]="countryArray" name="countryName" [formGroup]="locationForm">
+                    </app-country-search>
+                    <span class="uk-animation-shake"
+                        *ngIf="locationForm.get('countryName').invalid && locationForm.get('countryName').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="locationForm.get('countryName').valid && locationForm.get('countryName').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+            </fieldset>
+        </form>
+        <div *ngIf="locationForm.invalid && locationForm.touched"
+            class="uk-margin uk-text-bolder uk-text-danger uk-animation-fade">
+            Attention : tous les champs ne sont pas correctement remplis !</div>
+        <div *ngIf="locationError"
+            class="uk-margin uk-text-bolder uk-text-danger uk-animation-fade">
+            Attention : Cette adresse ne semble pas exister, veuillez réessayer !</div>
+        <div *ngIf="ukSpinnerOn" class="uk-position-cover uk-flex uk-flex-center uk-flex-middle" uk-spinner="ratio: 4"></div>
+    </div>
+    <div class="modalButtons">
+        <button type="button" class="uk-button uk-button-danger uk-position-bottom-left"
+            (click)=onClick(2)>Retour</button>
+        <button type="button" class="uk-button uk-button-primary uk-position-bottom-right" [disabled]="locationForm.invalid"
+            (click)="isValid()">Suivant</button>
+    </div>
+</app-modal>

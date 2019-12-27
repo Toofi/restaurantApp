@@ -1,0 +1,17 @@
+<div class="uk-margin-top uk-margin-left uk-card uk-card-default uk-card-body uk-border-rounded uk-animation-slide-bottom-small uk-animation-fast" style="min-height: 28em; width:750px; overflow: overlay;">
+    <div *ngIf="restaurant">
+        <h1 class="uk-card-title">La Carte</h1>
+        <fieldset style="max-height: 200px; overflow: overlay;">
+            <label class="uk-text-bold uk-text-success">Récapitulatif des prix encodés</label>
+            <table class="uk-table uk-table-small uk-table-divider uk-table-hover" style="margin-top: 0;">
+                <tr *ngFor="let item of restaurant.Food" style="overflow: auto;">
+                    <th class="uk-padding-remove uk-text-center"></th>
+                    <th class="uk-padding-remove uk-text-center">{{ item.foodId }}</th>
+                    <th class="uk-padding-remove uk-text-center">{{ item.foodName }}</th>
+                    <th class="uk-padding-remove uk-text-center">{{ item.foodPrice | currency:'€' }}</th>
+                </tr>
+            </table>
+        </fieldset>
+    </div>  
+    <div *ngIf="ukSpinnerOn" class="uk-position-cover uk-flex uk-flex-center uk-flex-middle spinner__success" uk-spinner="ratio: 4"></div>
+</div>

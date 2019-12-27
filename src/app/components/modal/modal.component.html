@@ -1,0 +1,13 @@
+<div class="uk-animation-slide-bottom-small uk-animation-fast" style="padding: 0px; margin: 0px; height: 36em;">
+    <h1 class="uk-modal-title uk-padding-small">
+        <ng-content select=".modalDescription"></ng-content>
+    </h1>
+    <div [ngStyle]="{'overflow': isOverflow ? 'auto' : 'none' }">
+    <div class="uk-modal-body uk-padding-small" style="height: 350px;">
+        <ng-content select=".modalBody"></ng-content>
+    </div>
+</div>
+    <div class="uk-padding-small">
+        <ng-content select=".modalButtons"></ng-content>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+$colorbasic : green;
+.spinner {
+    &__success{
+        color:$colorbasic;
+    }
+    &__black {
+        color:black;
+    }
+}

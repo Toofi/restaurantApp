@@ -1,0 +1,29 @@
+<div id="container"
+    class="uk-margin-top uk-margin-left uk-card uk-card-default uk-card-body uk-border-rounded uk-animation-slide-bottom-small uk-animation-fast"
+    style="max-height: 28em; width: 500px; overflow: auto;">
+    <div *ngIf="restaurants.length > 0">
+    <ul class="uk-list uk-list-divider" uk-accordion>
+        <li *ngFor="let item of restaurants">
+            <a class="uk-accordion-title">
+                <div class="uk-heading-bullet">{{ item.restaurant.Company.companyName }}</div>
+            </a>
+            <div class="uk-accordion-content uk-text-small uk-margin-left">
+                <div *ngIf="item.restaurant.Company.phoneNumber">
+                    <label class="uk-text-bold">Numéro de téléphone</label>
+                    <div class="uk-text-light">{{ item.restaurant.Company.phoneNumber }}</div>
+                </div>
+                <div *ngIf="item.restaurant.Company.email">
+                    <label class="uk-text-bold">Adresse e-mail</label>
+                    <div class="uk-text-light">{{ item.restaurant.Company.email }}</div>
+                </div>
+                <label class="uk-text-bold">Adresse</label>
+                <div class="uk-text-light">{{ item.restaurant.Location.streetName }}, {{ item.restaurant.Location.numberStreet }}</div>
+                <div class="uk-text-light">{{ item.restaurant.Location.postalCode }} {{ item.restaurant.Location.cityName }},
+                    {{ item.restaurant.Location.countryName }}</div>
+                <a class="uk-text-bold" routerLink="restaurant/{{ item.id }}">Voir la carte du restaurant</a>
+                <button class="uk-text-bold uk-text-danger" (click)="deleteItem(item.id)">SUPPRIMER</button>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>

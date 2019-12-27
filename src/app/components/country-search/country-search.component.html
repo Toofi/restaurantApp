@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup" style="position: relative;">
+    <input type="text" class="uk-input" [ngClass]="{'uk-form-danger': formGroup.get(this.name).invalid && formGroup.get(this.name).touched }"
+        placeholder="ex : Belgique" [formControlName]="name" >
+    <div *ngIf="formGroup.get(this.name).value && !isEqual() && transformArray.length > 0"
+        class="uk-card uk-card-default uk-card-hover"
+        style="position: absolute; z-index: 5; background: white;">
+        <ul class="uk-list uk-list-divider uk-position-z-index uk-padding-small uk-margin-remove" style="width: 14em; max-height: 11em; overflow: auto;">
+            <li *ngFor="let item of transformArray" (click)="setName(item.country)" class="uk-link">{{ item.country }}
+            </li>
+        </ul>
+    </div>
+</div>

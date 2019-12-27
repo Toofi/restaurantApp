@@ -1,0 +1,42 @@
+<app-modal>
+    <div class="modalDescription">Récapitulatif du formulaire</div>
+    <div class="modalBody">
+        <div class="grid-name">
+            <label class>Nom de la société</label>
+            <div class="uk-form-small">{{ orderService.Company.companyName }}</div>
+        </div>
+        <div class="grid-location">
+            <label>Adresse</label>
+            <div class="uk-form-small">{{ orderService.Location.numberStreet}}, {{ orderService.Location.streetName }}
+            </div>
+            <div class="uk-form-small">{{ orderService.Location.postalCode}} {{ orderService.Location.cityName }},
+                {{ orderService.Location.countryName }}</div>
+        </div>
+        <div class="grid-tel">
+            <label>Numéro de téléphone</label>
+            <div class="uk-form-small">{{ orderService.Company.phoneNumber }}</div>
+        </div>
+        <div class="grid-email">
+            <label>Adresse e-mail</label>
+            <div class="uk-form-small">{{ orderService.Company.email }}</div>
+        </div>
+        <div class="grid-foodlist">
+            <fieldset style="max-height: 200px; overflow: overlay;">
+                <label class="uk-text-bold uk-text-success">Récapitulatif des prix encodés</label>
+                <table class="uk-table uk-table-small uk-table-divider uk-table-hover" style="margin-top: 0;">
+                    <tr *ngFor="let item of orderService.Food" style="overflow: auto;">
+                        <th class="uk-padding-remove uk-text-center"></th>
+                        <th class="uk-padding-remove uk-text-center">{{ item.foodName }}</th>
+                        <th class="uk-padding-remove uk-text-center">{{ item.foodPrice | currency:'€' }}</th>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+        <!-- <app-map></app-map> -->
+    </div>
+    <div class="modalButtons">
+        <button class="uk-button uk-button-danger uk-position-bottom-left" (click)=onBack(4)>Retour</button>
+        <button class="uk-button uk-button-primary uk-position-bottom-right"
+                (click)="onConfirm(6)">Valider</button>
+    </div>
+</app-modal>

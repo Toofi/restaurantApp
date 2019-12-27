@@ -1,0 +1,55 @@
+<app-modal>
+    <div class="modalDescription">
+        Etape 3 : Informez-nous de vos prix
+    </div>
+    <div class="modalBody">
+        <form *ngIf='foodForm' [formGroup]="foodForm">
+            <fieldset class="uk-fieldset">
+                <label>Plat</label>
+                <div class="uk-flex">
+                    <input type="text" class="uk-input"
+                        [ngClass]="{'uk-form-danger': foodForm.get('foodName').invalid && foodForm.get('foodName').touched }"
+                        placeholder='Chicon gratin' formControlName="foodName">
+                    <span class="uk-animation-shake"
+                        *ngIf="foodForm.get('foodName').invalid && foodForm.get('foodName').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="foodForm.get('foodName').valid && foodForm.get('foodName').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Prix</label>
+                <div class="uk-flex">
+                    <input type="text" class="uk-input"
+                        [ngClass]="{'uk-form-danger': foodForm.get('foodName').invalid && foodForm.get('foodName').touched }"
+                        placeholder="ex : 19.53€" formControlName="foodPrice" style="margin-bottom: -15px;">
+                    <span class="uk-animation-shake"
+                        *ngIf="foodForm.get('foodPrice').invalid && foodForm.get('foodPrice').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="foodForm.get('foodPrice').valid && foodForm.get('foodPrice').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <button type="button" class="uk-button-primary uk-button-primary-default uk-button-small uk-margin"
+                    (click)="isFoodFormValid()">Ajouter</button>
+                <div *ngIf="invalidFoodForm" class="uk-text-bolder uk-text-danger">Attention : tous les champs ne sont
+                    pas correctement remplis !</div>
+            </fieldset>
+            <fieldset style="max-height: 200px; overflow: overlay;">
+                <label class="uk-text-bold uk-text-success">Récapitulatif des prix encodés</label>
+                <table class="uk-table uk-table-small uk-table-divider uk-table-hover" style="margin-top: 0;">
+                    <tr *ngFor="let item of foodList" style="overflow: auto;">
+                        <th class="uk-padding-remove uk-text-center">{{ item.foodId }}</th>
+                        <th class="uk-padding-remove uk-text-center">{{ item.foodName }}</th>
+                        <th class="uk-padding-remove uk-text-center">{{ item.foodPrice | currency:'€' }}</th>
+                        <th class="uk-padding-remove uk-text-center"><button type="button"
+                                (click)="onDeleteItem(item.foodId)" uk-icon="trash"></button></th>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modalButtons">
+        <button class="uk-button uk-button-danger uk-position-bottom-left" (click)="onClick(3)">Retour</button>
+        <button class="uk-button uk-button-primary uk-position-bottom-right" (click)="onClick(5)">Suivant</button>
+    </div>
+</app-modal>

@@ -1,0 +1,55 @@
+<app-modal>
+    <div class="modalDescription">
+        Etape 1 : Informations Générales
+    </div>
+    <div class="modalBody">
+        <form [formGroup]="companyForm">
+            <fieldset class="uk-fieldset">
+                <label>Nom de la société</label>
+                <div class="uk-flex">
+                    <input type="text" class="uk-input uk-margin"
+                        [ngClass]="{'uk-form-danger': companyForm.get('companyName').invalid && companyForm.get('companyName').touched }"
+                        placeholder='ex : ITDM' formControlName="companyName">
+                    <span class="uk-animation-shake"
+                        *ngIf="companyForm.get('companyName').invalid && companyForm.get('companyName').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="companyForm.get('companyName').valid && companyForm.get('companyName').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Numéro de téléphone</label>
+                <div class="uk-flex">
+                    <input type="tel" class="uk-input uk-margin"
+                        [ngClass]="{'uk-form-danger': companyForm.get('phoneNumber').invalid && companyForm.get('phoneNumber').touched }"
+                        placeholder='ex : 0478444719' formControlName="phoneNumber">
+                    <span class="uk-animation-shake"
+                        *ngIf="companyForm.get('phoneNumber').invalid && companyForm.get('phoneNumber').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="companyForm.get('phoneNumber').valid && companyForm.get('phoneNumber').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+                <label>Adresse e-mail</label>
+                <div class="uk-flex">
+                    <input type="email" class="uk-input uk-margin"
+                        [ngClass]="{'uk-form-danger': companyForm.get('email').invalid && companyForm.get('email').touched }"
+                        placeholder='ex : ronald@gmail.com' formControlName="email">
+                    <span class="uk-animation-shake"
+                        *ngIf="companyForm.get('email').invalid && companyForm.get('email').touched"
+                        uk-icon="icon: close; ratio: 2;"></span>
+                    <span class="uk-animation-scale-up uk-animation-fast"
+                        *ngIf="companyForm.get('email').valid && companyForm.get('email').touched"
+                        uk-icon="icon: check; ratio: 2;"></span>
+                </div>
+            </fieldset>
+        </form>
+        <div *ngIf="companyForm.invalid && companyForm.touched" class="uk-text-bolder uk-text-danger uk-animation-fade">
+            Attention : tous les champs ne sont pas correctement remplis !</div>
+    </div>
+    <div class="modalButtons">
+        <button type="button" class="uk-button uk-button-danger uk-position-bottom-left"
+            (click)="onClick(1)">Retour</button>
+        <button type="button" (click)="onSubmitForm()" class="uk-button uk-button-primary uk-position-bottom-right"
+            [disabled]="!companyForm || !companyForm.get('companyName').valid" (click)="isValid()">Suivant</button>
+    </div>
+</app-modal>

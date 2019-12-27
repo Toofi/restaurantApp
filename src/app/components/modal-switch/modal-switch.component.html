@@ -1,0 +1,13 @@
+<ng-container [ngSwitch]="stepModal">
+    <div id="modalForm" uk-modal bg-close="false">
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-border-rounded uk-padding-remove">
+            <app-step-one *ngSwitchCase=1 (emitter)="setStepPosition($event)"></app-step-one>
+            <app-step-two *ngSwitchCase=2 (emitter)="setStepPosition($event)"></app-step-two>
+            <app-step-three *ngSwitchCase=3 (emitter)="setStepPosition($event)"></app-step-three>
+            <app-step-four *ngSwitchCase=4 (emitter)="setStepPosition($event)"></app-step-four>
+            <app-checkout *ngSwitchCase=5 (emitter)="setStepPosition($event)"></app-checkout>
+            <app-confirmation *ngSwitchCase=6 (emitter)="setStepPosition($event)"></app-confirmation>        
+        </div>
+    </div>
+</ng-container>
+

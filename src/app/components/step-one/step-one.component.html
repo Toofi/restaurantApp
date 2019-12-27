@@ -1,0 +1,21 @@
+<app-modal [isOverflow]="true">
+    <div class="modalDescription">
+        Conditions générales d'utilisation
+    </div>
+        <div class="modalBody">
+            <div *ngFor="let article of articles">
+                <h3>{{ article.article }}</h3>
+                <p>{{ article.content }}</p>
+            </div>
+        </div>
+        <div class="modalButtons">
+            <label for="checkbox">
+                <input type="checkbox" id="checkbox" class="uk-checkbox uk-margin" (click)="onCheckBox()" style="margin-top: 1em;">
+                <span style="padding-left: 0.5em;">J'ai lu et j'accepte les conditions générales d'utilisation</span>
+            </label>
+            <button class="uk-button uk-button-danger uk-position-bottom-left uk-modal-close" routerLink="" (click)="onClick(0)">Refuser</button>
+            <button class="uk-button uk-button-primary uk-position-bottom-right"
+                    (click)="onClick(2)"
+                    [disabled]="!checkboxForm || !checkboxForm.get('accept') || !checkboxForm.get('accept').value">Accepter</button>
+        </div>
+</app-modal>
